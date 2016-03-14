@@ -33,6 +33,8 @@ public class CreateNewPostPresenterImpl implements CreateNewPostPresenter,OnFini
     public void onPostSuccessListener(ServerMessage response) {
         mView.hideProgress();
         mView.showMessage("post success");
+
+
     }
 
     @Override

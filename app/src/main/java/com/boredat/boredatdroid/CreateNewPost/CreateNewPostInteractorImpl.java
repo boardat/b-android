@@ -10,7 +10,10 @@ import com.boredat.boredatdroid.models.ServerMessage;
 import com.boredat.boredatdroid.network.BoredatPostRequest;
 import com.boredat.boredatdroid.network.RQSingleton;
 import com.boredat.boredatdroid.network.UserSessionManager;
+import com.boredat.boredatdroid.network.oauth.OauthHeader;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,13 +34,13 @@ public class CreateNewPostInteractorImpl implements CreateNewPostInteractor {
 
         // text - the text of the post
         Map<String,String> mParams = new HashMap<String,String>();
-//        String oauthEncodeText = OauthHeader.encode(text);
-//        String utf8EncodeText = "";
-//        try {
-//            utf8EncodeText = URLEncoder.encode(text,"UTF-8");
-//        } catch (UnsupportedEncodingException e) {
-//            e.printStackTrace();
-//        }
+        String oauthEncodeText = OauthHeader.encode(text);
+        String utf8EncodeText = "";
+        try {
+            utf8EncodeText = URLEncoder.encode(text, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
         mParams.put("text", text);
 
         /**
@@ -60,7 +63,7 @@ public class CreateNewPostInteractorImpl implements CreateNewPostInteractor {
 //        }
 
         // reply to post for debugging purposes
-        mParams.put("id","4995638");
+//        mParams.put("id", "4995638");
 
         Request newPostRequest = new BoredatPostRequest<>(Request.Method.POST, url, mParams, ServerMessage.class, mAccess, null, new Response.Listener<ServerMessage>() {
             @Override
