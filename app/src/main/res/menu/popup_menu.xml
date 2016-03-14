@@ -1,0 +1,13 @@
+<!-- popup menu items -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/pop_action_agree"
+        android:title="@string/post_menu_action_agree"/>
+    <item android:id="@+id/pop_action_disagree"
+        android:title="@string/post_menu_action_disagree"/>
+    <item android:id="@+id/pop_action_newsworthy"
+        android:title="@string/post_menu_action_newsworthy"/>
+    <item android:id="@+id/pop_action_reply"
+        android:title="@string/post_menu_action_reply"/>
+    <item android:id="@+id/pop_action_more"
+        android:title="@string/post_menu_action_more" />
+</menu>

@@ -1,0 +1,105 @@
+<!-- A DrawerLayout is intended to be used as the top-level content view using match_parent for both width and height to consume the full space available. -->
+<android.support.v4.widget.DrawerLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!-- As the main content view, the view below consumes the entire
+         space available using match_parent in both dimensions. -->
+    <RelativeLayout
+        android:id="@+id/main_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/alternate_toolbar"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:minHeight="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+
+        <!--This is the main window where most content is actually Displayed. This gets switched out by the fragmentManager-->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/alternate_toolbar"
+            android:id="@+id/container">
+        </FrameLayout>
+    </RelativeLayout>
+
+    <!-- android:layout_gravity="start" tells DrawerLayout to treat
+         this as a sliding drawer on the left side for left-to-right
+         languages and on the right side for right-to-left languages.
+         If you're not building against API 17 or higher, use
+         android:layout_gravity="left" instead. -->
+    <!-- The drawer is given a fixed width in dp and extends the full height of
+         the container. -->
+
+    <!-- The navigation drawer -->
+    <LinearLayout
+        android:id="@+id/content_frame"
+        android:layout_width="@dimen/navigation_drawer_width"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="start"
+        android:background="#ffffffff">
+
+        <!-- This RL is the header for the navigationDrawer -->
+        <RelativeLayout
+            android:id="@+id/nav_header"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="#ff88fff0">
+
+            <!-- Text in header -->
+            <TextView
+                android:id="@+id/nav_header_text"
+                android:text="@string/text_sample"
+                android:layout_width="match_parent"
+                android:layout_height="100dp" />
+
+            <!-- Image in header -->
+<!--            <ImageView
+                android:id="@+id/nav_header_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignLeft="@id/nav_header_text"
+                android:src="@mipmap/ic_launcher"/>-->
+
+<!--            <com.android.volley.toolbox.NetworkImageView
+                android:id="@+id/nav_header_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />-->
+
+
+        </RelativeLayout>
+
+
+        <!-- Navigation options in navigationDrawer -->
+        <ListView
+            android:id="@+id/left_drawer"
+            android:layout_below="@id/nav_header"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:choiceMode="singleChoice"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="0dp" />
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            />
+    </LinearLayout>
+
+</android.support.v4.widget.DrawerLayout>

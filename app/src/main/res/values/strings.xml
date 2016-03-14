@@ -1,0 +1,97 @@
+<resources>
+    <string name="app_name">Boredat</string>
+
+    <!-- Navigation Drawer -->
+    <string-array name="navigation_items">
+        <item>Local Board</item>
+        <item>Global Board</item>
+        <item>Notifications</item>
+        <item>Messages</item>
+        <item>The Zeitgeist</item>
+    </string-array>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!-- Action Bar -->
+    <string name="action_feedback">Make a suggestion</string>
+    <string name="action_debug">Report a bug</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_logout">Sign out</string>
+    <string name="action_new_post">New post</string>
+    <!-- Post Header -->
+    <string name="post_example_personality_name">malloc</string>
+    <string name="post_example_timestamp_location">3 minutes ago from CMC</string>
+
+    <!-- Post Header Overflow Menu -->
+    <string name="post_header_overflow_favorite_caption">Favorite</string>
+    <string name="post_header_overflow_report_caption">Report</string>
+    <string name="post_header_overflow_add_personality_caption">Add personality</string>
+    <string name="post_header_overflow_remove_personality_caption">Remove personality</string>
+
+    <string name="post_example_text">developing for android is much harder than i thought it would be</string>
+
+    <!-- Post Footer -->
+    <string name="post_agree_button_caption">Agree</string>
+    <string name="post_disagree_button_caption">Disagree</string>
+    <string name="post_newsworthy_button_caption">Newsworthy</string>
+    <string name="post_vote_button_caption">Vote</string>
+    <string name="post_reply_button_caption">Reply</string>
+
+    <string name="post_example_agree_icon_filler">agree</string>
+    <string name="post_example_disagree_icon_filler">disagree</string>
+    <string name="post_example_newsworthy_icon_filler">newsworthy</string>
+    <string name="post_example_reply_button_filler">replies</string>
+
+    <string name="post_example_num_agrees">2 agree</string>
+    <string name="post_example_num_disagrees">1 disagree</string>
+    <string name="post_example_num_newsworthies">3</string>
+    <string name="post_example_num_replies">2</string>
+
+
+    <!-- Post popup menu -->
+    <string name="post_menu_action_agree">Agree</string>
+    <string name="post_menu_action_disagree">Disagree</string>
+    <string name="post_menu_action_newsworthy">Newsworthy</string>
+    <string name="post_menu_action_reply">Reply</string>
+    <string name="post_menu_action_more">More</string>
+
+
+    <!-- Paginator -->
+    <string name="paginator_action_label_first">First</string>
+    <string name="paginator_action_label_previous">Prev</string>
+    <string name="paginator_action_label_next">Next</string>
+    <string name="paginator_page_label_prev">1</string>
+    <string name="paginator_page_label_current">2</string>
+    <string name="paginator_page_label_next">3</string>
+
+
+    <string name="no_data_available">No data available.</string>
+
+    <!-- LoginActivity -->
+    <string name="login_user_id">User ID</string>
+    <string name="login_password">Password</string>
+    <string name="login_button_caption">LOGIN</string>
+    <string name="register_button_caption">Sign Up</string>
+    <string name="debug_user_id"></string>
+    <string name="debug_pass"></string>
+
+    <!-- CreateNewPostFragment -->
+    <string name="create_new_post_title">What\'s on your mind?</string>
+    <string name="create_new_post_hint">Type your thoughts here</string>
+    <string name="create_new_post_button_post">Post</string>
+    <string name="create_new_post_button_cancel">Cancel</string>
+    <string name="create_new_post_option_screenname">with personality</string>
+    <string name="create_new_post_option_anonymous">as anonymous</string>
+    <string name="create_new_post_option_location">from location</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="text_sample">TEXT SAMPLE</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="empty_card_label">No posts :(</string>
+    <string name="title_activity_debug">DebugActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="dialog_loading_posts">Loading posts...</string>
+    <string name="title_activity_single_fragment">SingleFragmentActivity</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="example_post_text">3 minutes ago from CMC</string>
+</resources>

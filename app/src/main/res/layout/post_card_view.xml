@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card_view"
+    android:layout_gravity="center_vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardCornerRadius="4dp"
+    android:layout_margin="4dp">
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <!--Optional Header-->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id = "@+id/post_personality_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="8dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/prof_thumbnail"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"/>
+
+            <TextView
+                android:id="@+id/post_personality_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignWithParentIfMissing="true"
+                android:layout_toRightOf="@+id/post_personality_image"
+                android:layout_toEndOf="@+id/post_personality_image"
+                android:text="@string/post_example_personality_name"
+                android:textSize="16sp"
+                android:textColor="@color/primary_text"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+                android:padding="8dp"
+                android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
+
+        <!--Inner content-->
+        <!--Post text-->
+        <TextView
+            android:id="@+id/post_content_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="16dp"
+            android:text="@string/post_example_text"
+            style="@style/Base.TextAppearance.AppCompat.Body1"
+            android:autoLink="web" />
+
+
+        <!--A/D/N STATS -->
+        <RelativeLayout
+            android:id="@+id/post_adn_stats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="16dp"
+            android:gravity="center_vertical">
+
+            <!--2 agree -->
+            <TextView
+                android:id="@+id/post_num_agrees"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/post_example_num_agrees"
+                android:paddingRight="4dp"
+                android:textColor="@color/md_green_600" />
+
+            <!--2 up arrows (eventually) -->
+            <ImageView
+                android:id="@+id/post_agree_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/post_num_agrees"
+                android:paddingRight="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_alignWithParentIfMissing="true"
+                android:src="@drawable/agree"/>
+
+
+            <!--3 disagree -->
+            <TextView
+                android:id="@+id/post_num_disagrees"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/post_example_num_disagrees"
+                android:layout_toRightOf="@+id/post_agree_icon"
+                android:layout_alignWithParentIfMissing="true"
+                android:paddingRight="4dp"
+                android:textColor="@color/md_red_600"
+                android:gravity="center_vertical"/>
+
+            <!--3 down arrows (eventually)-->
+            <ImageView
+                android:id="@+id/post_disagree_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/post_num_disagrees"
+                android:paddingRight="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_alignWithParentIfMissing="true"
+                android:src="@drawable/disagree"
+                android:gravity="center_vertical"/>
+
+            <!--5 newsworthy icons (eventually) -->
+            <TextView
+                android:id="@+id/post_num_newsworthies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/post_example_num_newsworthies"
+                android:layout_toRightOf="@+id/post_disagree_icon"
+                android:layout_alignWithParentIfMissing="true"
+                android:paddingRight="4dp"
+                android:textColor="@color/secondary_text"
+                android:gravity="center_vertical"/>
+
+            <ImageView
+                android:id="@+id/post_newsworthy_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/post_num_newsworthies"
+                android:paddingRight="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_alignWithParentIfMissing="true"
+                android:src="@drawable/newsworthy"
+                android:gravity="center_vertical"/>
+        </RelativeLayout>
+
+
+        <!--Footer -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="16dp">
+
+            <!-- Timestamp -->
+            <TextView
+                android:id="@+id/post_timestamp_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/post_example_timestamp_location"
+                android:textSize="14sp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                android:textColor="@color/secondary_text"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:gravity="center_vertical" />
+
+            <!-- Reply count -->
+            <TextView
+                android:id="@+id/post_num_replies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/post_example_num_newsworthies"
+                android:paddingLeft="4dp"
+                android:textColor="@color/accent"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:gravity="center_vertical"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+            <!-- Reply icon -->
+            <ImageButton
+                android:id="@+id/post_action_reply"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:layout_toLeftOf="@+id/post_num_replies"
+                android:layout_toStartOf="@+id/post_num_replies"
+                android:layout_alignWithParentIfMissing="true"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_chat_bubble_outline_black_24dp"
+                android:background="@color/cardview_light_background"
+                />
+
+            <!-- Overflow Menu -->
+            <ImageButton
+                android:id="@+id/post_action_overflow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_more_horiz_black_24dp"
+                android:background="@color/cardview_light_background"
+                android:layout_toLeftOf="@+id/post_action_reply"
+                android:layout_toStartOf="@+id/post_action_reply"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>
