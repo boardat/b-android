@@ -10,7 +10,10 @@ import com.boredat.boredatdroid.models.ServerMessage;
 import com.boredat.boredatdroid.network.BoredatPostRequest;
 import com.boredat.boredatdroid.network.RQSingleton;
 import com.boredat.boredatdroid.network.UserSessionManager;
+import com.boredat.boredatdroid.network.oauth.OauthHeader;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
