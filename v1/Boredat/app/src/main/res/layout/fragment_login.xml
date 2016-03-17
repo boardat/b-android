@@ -1,0 +1,79 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/primary"
+    tools:context="com.boredat.boredat.fragments.LoginFragment">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="40dp"
+        android:paddingLeft="@dimen/margin_small"
+        android:paddingRight="@dimen/margin_small">
+
+        <!-- Logo -->
+        <ImageView
+            android:src="@drawable/icon"
+            android:layout_width="wrap_content"
+            android:layout_height="72dp"
+            android:layout_marginBottom="24dp"
+            android:layout_gravity="center_horizontal"/>
+
+        <!-- Input UserId -->
+        <com.devspark.robototextview.widget.RobotoAutoCompleteTextView
+            android:id="@+id/login_edit_user_id"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:completionThreshold="1"
+            android:inputType="text"
+            app:typeface="roboto_mono_medium"
+            android:hint="@string/login_user_id"/>
+
+        <!-- Input Password -->
+        <com.devspark.robototextview.widget.RobotoEditText
+            android:id="@+id/login_edit_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:inputType="textPassword"
+            app:typeface="roboto_mono_medium"
+            android:hint="@string/login_password"/>
+
+
+        <!-- Remember Me -->
+        <com.devspark.robototextview.widget.RobotoCheckBox
+            android:id="@+id/login_remember_me"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/login_remember_me"/>
+
+        <!-- Login Button -->
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:padding="@dimen/margin_medium"
+            android:backgroundTint="@color/primary_dark"
+            android:text="@string/login_button_caption"/>
+
+        <!-- Sign up link -->
+        <!-- TODO implement this-->
+        <com.devspark.robototextview.widget.RobotoTextView
+            android:id="@+id/login_signup_rtv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="@string/login_sign_up"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+</FrameLayout>

@@ -1,0 +1,110 @@
+<resources>
+    <string name="app_name">Boredat</string>
+
+    <!-- Navigation Drawer -->
+    <string name="navdrawer_item_main_feed">Main Feed</string>
+    <string name="navdrawer_item_zeitgeist">Zeitgeist</string>
+    <string name="navdrawer_item_heartbeat">Heartbeat</string>
+    <string name="navdrawer_item_my_account">My account</string>
+    <string name="navdrawer_item_notifications">Notifications</string>
+    <string name="navdrawer_item_messages">Messages</string>
+    <string name="navdrawer_item_settings">Settings</string>
+    <string name="navdrawer_item_sign_out">Sign out</string>
+    <string name="navdrawer_item_development">Development</string>
+    <string name="navdrawer_item_about">About</string>
+    <string name="navdrawer_item_report_bug">Report a bug</string>
+    <string name="navdrawer_item_send_feedback">Send feedback</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!-- Other Navigation Titles -->
+    <string name="navdrawer_item_local_board">Local Board</string>
+    <string name="navdrawer_item_global_board">Global Board</string>
+
+    <!-- LoginActivity -->
+    <string name="login_user_id">UserId</string>
+    <string name="login_password">Password</string>
+    <string name="login_button_caption">Login</string>
+    <string name="login_filler_user_id">ijkapelke</string>
+    <string name="login_filler_password">spoons</string>
+    <string name="login_sign_up">Need an account? Create one</string>
+    <string name="login_remember_me">Remember Me</string>
+
+    <!-- PaginatorActivity -->
+    <string name="page_label">Page %1$d</string>
+
+    <!-- LocalBoardActivity -->
+    <string name="activity_local_board_title">Bored at %1$s</string>
+    <string name="empty_feed">No content to show.</string>
+    <string name="context_vote_agree">Agree</string>
+    <string name="context_vote_disagree">Disagree</string>
+
+    <!-- GlobalBoardActivity -->
+    <string name="activity_global_board_title">Global Board</string>
+
+    <!-- DetailPostActivity -->
+    <string name="empty_replies">No replies yet.</string>
+    <!-- ZeitgeistActivity -->
+    <!-- CreateNewPostActivity -->
+    <string name="create_new_post_hint">Type your thoughts here</string>
+    <string name="create_new_post_option_screenname">with personality</string>
+    <string name="create_new_post_option_location">with location</string>
+    <string name="create_new_post_button_post">Post</string>
+    <string name="compose_post_location_filler">from The Mezzanine</string>
+    <string name="compose_post_anonymous">anonymous</string>
+
+    <!-- HeartbeatActivity -->
+    <!-- NotificationsActivity -->
+    <!-- MessagesActivity -->
+    <!-- SettingsActivity -->
+    <!-- SignOutActivity -->
+    <!-- AboutActivity -->
+    <!-- SendFeedbackActivity -->
+
+    <string name="u_middle_dot">\u00B7</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="action_settings">Settings</string>
+    <string name="action_logout">Sign out</string>
+    <string name="paginator_page_2_label">Page 2</string>
+    <string name="paginator_next_label">Next</string>
+    <string name="sample_num">13</string>
+    <string name="sample_temp_timestamp">Apr 20 @ 4:20pm</string>
+    <string name="sample_personality_name">malloc</string>
+    <string name="sample_post">Every now and then when your life gets complicated and the weasels start closing in, the only cure is to load up on heinous chemicals and then drive like a bastard from Hollywood to Las Vegas with the music at top volume and at least a pint of ether.</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="post_timestamp_sep">.</string>
+    <string name="title_activity_detail_post">DetailPostActivity</string>
+    <string name="title_activity_main_session">MainSessionActivity</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+
+    <string name="lounge_fragment">Lounge Fragment</string>
+    <string name="local_board">Local</string>
+    <string name="global_board">Global</string>
+    <string name="zeitgeist_fragment">Zeitgeist Fragment</string>
+    <string name="zeitgeist_top_personalities">Top personalities this week</string>
+    <string name="zeitgeist_network_leaderboard">Network Leaderboard</string>
+    <string name="zeitgeist_top_posts">Top posts this week</string>
+    <string name="zeitgeist_best">Best</string>
+    <string name="zeitgeist_worst">Worst</string>
+    <string name="zeitgeist_newsworthy">Newsworthy</string>
+    <string name="feed_fragment">Feed Fragment</string>
+    <string name="inbox_fragment">Inbox Fragment</string>
+    <string name="more_info_fragment">More Info Fragment</string>
+    <string name="user_fragment">User Fragment</string>
+
+
+    <string-array name="lounge_options_array">
+        <item>Local Board</item>
+        <item>Global Board</item>
+    </string-array>
+
+
+    <string name="spinner_lounge_local">Local Board</string>
+    <string name="spinner_lounge_global">Global Board</string>
+
+    <string name="dialog_logging_in">Logging in...</string>
+
+</resources>

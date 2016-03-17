@@ -1,0 +1,41 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.boredat.boredat.fragments.UserFragment"
+    android:background="@color/primary">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <include layout="@layout/divider"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/primary"
+        android:padding="@dimen/margin_medium">
+
+        <Button
+            android:id="@+id/user_settings_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_navview_settings"
+            android:text="@string/action_settings"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"/>
+
+        <include layout="@layout/divider"/>
+
+
+        <Button
+            android:id="@+id/user_sign_out_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textSize="@dimen/font_size_medium"
+            android:text="@string/navdrawer_item_sign_out"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"/>
+
+
+    </LinearLayout>
+
+</FrameLayout>

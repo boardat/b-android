@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+        <item
+            android:id="@+id/context_vote_agree"
+            android:icon="@drawable/ic_context_agree_enabled"
+            android:title="@string/context_vote_agree" />
+        <item
+            android:id="@+id/context_vote_disagree"
+            android:icon="@drawable/ic_context_disagree_enabled"
+            android:title="@string/context_vote_disagree" />
+</menu>

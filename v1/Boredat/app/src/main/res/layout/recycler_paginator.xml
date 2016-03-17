@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/margin_large"
+    android:paddingBottom="@dimen/margin_large"
+    android:gravity="center">
+
+        <ImageButton
+            android:id="@+id/paginator_action_first"
+            android:src="@drawable/ic_paginator_first_page"
+            android:tint="@color/icons"
+            android:backgroundTint="@color/cardview_light_background"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <ImageButton
+            android:id="@+id/paginator_action_previous"
+            android:src="@drawable/ic_paginator_previous_page"
+            android:tint="@color/icons"
+            android:backgroundTint="@color/cardview_light_background"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+
+        <com.devspark.robototextview.widget.RobotoTextView
+            android:id="@+id/paginator_current_page"
+            android:text="@string/paginator_page_2_label"
+            android:textSize="@dimen/font_size_large"
+            android:textColor="@color/secondary_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            app:typeface="roboto_regular"/>
+
+
+        <ImageButton
+            android:id="@+id/paginator_action_next"
+            android:src="@drawable/ic_paginator_next_page"
+            android:tint="@color/icons"
+            android:backgroundTint="@color/cardview_light_background"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"/>
+
+    </LinearLayout>

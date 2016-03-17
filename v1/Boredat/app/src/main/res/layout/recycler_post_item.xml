@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:gravity="center_vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardElevation="4dp"
+    card_view:cardCornerRadius="2dp"
+    android:layout_margin="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Post Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/post_personality_image"
+                android:layout_width="@dimen/avatar_size"
+                android:layout_height="@dimen/avatar_size"
+                android:paddingTop="@dimen/margin_small"
+                android:paddingLeft="16dp"
+                android:src="@drawable/personality_thumbnail_malloc"/>
+
+            <com.devspark.robototextview.widget.RobotoTextView
+                android:id="@+id/post_personality_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sample_personality_name"
+                android:textSize="@dimen/font_size_small"
+                android:textColor="@color/primary_text"
+                android:paddingTop="@dimen/margin_small"
+                android:paddingLeft="@dimen/margin_large"
+                app:typeface="roboto_condensed_regular"/>
+
+            <com.devspark.robototextview.widget.RobotoTextView
+                android:id="@+id/post_personality_timestamp_sep"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/u_middle_dot"
+                android:textSize="14sp"
+                android:paddingTop="@dimen/margin_small"
+                android:paddingLeft="@dimen/margin_large"
+                android:textColor="@color/primary_text"
+                app:typeface="roboto_condensed_regular" />
+
+            <com.devspark.robototextview.widget.RobotoTextView
+                android:id="@+id/post_timestamp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sample_temp_timestamp"
+                android:textSize="@dimen/font_size_tiny"
+                android:paddingTop="@dimen/margin_small"
+                android:paddingLeft="@dimen/margin_large"
+                android:paddingRight="@dimen/margin_large"
+                app:typeface="roboto_condensed_regular"
+                android:textColor="@color/secondary_text"/>
+        </LinearLayout>
+
+        <include layout="@layout/divider"/>
+
+        <!-- Post content -->
+        <com.devspark.robototextview.widget.RobotoTextView
+            android:id="@+id/post_content"
+            android:paddingLeft="@dimen/activity_vertical_margin"
+            android:paddingRight="@dimen/activity_vertical_margin"
+            android:paddingTop="@dimen/margin_larger"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hello_blank_fragment"
+            android:textSize="@dimen/font_size_regular"
+            android:textColor="@color/primary_text"
+            app:typeface="roboto_regular"/>
+
+        <!-- ADN Widget -->
+        <LinearLayout
+            android:id="@+id/post_adn"
+            android:paddingTop="@dimen/font_size_regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical">
+
+            <!-- AGREES -->
+            <com.devspark.robototextview.widget.RobotoTextView
+                android:id="@+id/post_adn_num_agrees"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sample_num"
+                android:textSize="@dimen/font_size_regular"
+                android:textColor="@color/green"
+                android:paddingLeft="@dimen/activity_vertical_margin"
+                app:typeface="roboto_regular"/>
+
+            <ImageView
+                android:id="@+id/post_adn_agrees"
+                android:paddingLeft="@dimen/margin_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/agree"/>
+
+            <!-- DISAGREES -->
+            <com.devspark.robototextview.widget.RobotoTextView
+                android:id="@+id/post_adn_num_disagrees"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sample_num"
+                android:textSize="@dimen/font_size_regular"
+                android:textColor="@color/red"
+                android:paddingLeft="@dimen/margin_large"
+                app:typeface="roboto_regular"/>
+
+            <ImageView
+                android:id="@+id/post_adn_disagrees"
+                android:paddingLeft="@dimen/margin_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/disagree"/>
+
+            <!-- NEWSWORTHIES -->
+            <com.devspark.robototextview.widget.RobotoTextView
+                android:id="@+id/post_adn_num_newsworthies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sample_num"
+                android:textSize="@dimen/font_size_regular"
+                android:textColor="@color/grey"
+                android:paddingLeft="@dimen/margin_large"
+                app:typeface="roboto_regular"/>
+
+            <ImageView
+                android:id="@+id/post_adn_newsworthies"
+                android:paddingLeft="@dimen/margin_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/newsworthy"/>
+        </LinearLayout>
+
+        <!-- Post Action Footer -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/margin_large"
+            android:paddingLeft="@dimen/margin_large"
+            android:layout_gravity="center_vertical">
+
+             <!--REPLY-->
+            <Button
+                android:id="@+id/post_action_reply"
+                android:layout_width="72dp"
+                android:layout_height="40dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:padding="8dp"
+                android:drawableLeft="@drawable/ic_post_reply"
+                android:text="@string/sample_num"
+                style="@style/Base.Widget.AppCompat.Button.Borderless" />
+
+
+
+
+            <!-- VOTE AGREE OR DISAGREE -->
+            <!-- (Brings up context menu) -->
+            <ImageButton
+                android:id="@+id/post_action_vote_ad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:padding="8dp"
+                android:src="@drawable/ic_post_vote_enabled"
+                style="@style/Base.Widget.AppCompat.ButtonBar" />
+
+            <!-- VOTE NEWSWORTHY -->
+            <com.boredat.boredat.ui.NewsworthyButton
+                android:id="@+id/post_action_newsworthy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/post_action_vote_ad"
+                android:layout_toStartOf="@+id/post_action_vote_ad"
+                android:padding="8dp"
+                android:src="@drawable/newsworthy_button"
+                style="@style/Base.Widget.AppCompat.ButtonBar"/>
+
+        </RelativeLayout>
+
+
+
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

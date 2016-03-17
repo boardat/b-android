@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="vote_newsworthy_button">
+        <attr name="state_has_voted_newsworthy" format="boolean" />
+    </declare-styleable>
+</resources>

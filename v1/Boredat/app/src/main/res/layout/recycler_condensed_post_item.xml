@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/condensed_post_item"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+        <!-- Post Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/condensed_post_personality_image"
+                android:layout_width="@dimen/avatar_size"
+                android:layout_height="@dimen/avatar_size"
+                android:paddingTop="@dimen/margin_small"
+                android:paddingLeft="16dp"
+                android:src="@drawable/personality_thumbnail_malloc"/>
+
+            <com.devspark.robototextview.widget.RobotoTextView
+                android:id="@+id/condensed_post_personality_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sample_personality_name"
+                android:textSize="@dimen/font_size_small"
+                android:textColor="@color/primary_text"
+                android:paddingTop="@dimen/margin_small"
+                android:paddingLeft="@dimen/margin_large"
+                app:typeface="roboto_condensed_regular"/>
+
+            <com.devspark.robototextview.widget.RobotoTextView
+                android:id="@+id/condensed_post_personality_timestamp_sep"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/u_middle_dot"
+                android:textSize="14sp"
+                android:paddingTop="@dimen/margin_small"
+                android:paddingLeft="@dimen/margin_large"
+                android:textColor="@color/primary_text"
+                app:typeface="roboto_condensed_regular" />
+
+            <com.devspark.robototextview.widget.RobotoTextView
+                android:id="@+id/condensed_post_timestamp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sample_temp_timestamp"
+                android:textSize="@dimen/font_size_tiny"
+                android:paddingTop="@dimen/margin_small"
+                android:paddingLeft="@dimen/margin_large"
+                android:paddingRight="@dimen/margin_large"
+                app:typeface="roboto_condensed_regular"
+                android:textColor="@color/secondary_text"/>
+        </LinearLayout>
+
+        <!-- Post content -->
+        <com.devspark.robototextview.widget.RobotoTextView
+            android:id="@+id/condensed_post_content"
+            android:paddingLeft="@dimen/activity_vertical_margin"
+            android:paddingRight="@dimen/activity_vertical_margin"
+            android:paddingTop="@dimen/font_size_regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hello_blank_fragment"
+            android:textSize="@dimen/font_size_regular"
+            android:textColor="@color/primary_text"
+            app:typeface="roboto_regular"/>
+
+        <!-- ADN Widget -->
+        <LinearLayout
+            android:id="@+id/condensed_post_adn"
+            android:paddingTop="@dimen/font_size_regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical">
+
+            <!-- AGREES -->
+            <com.devspark.robototextview.widget.RobotoTextView
+                android:id="@+id/condensed_post_adn_num_agrees"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sample_num"
+                android:textSize="@dimen/font_size_regular"
+                android:textColor="@color/green"
+                android:paddingLeft="@dimen/activity_vertical_margin"
+                app:typeface="roboto_regular"/>
+
+            <ImageView
+                android:id="@+id/condensed_post_adn_agrees"
+                android:paddingLeft="@dimen/margin_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/agree"/>
+
+            <!-- DISAGREES -->
+            <com.devspark.robototextview.widget.RobotoTextView
+                android:id="@+id/condensed_post_adn_num_disagrees"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sample_num"
+                android:textSize="@dimen/font_size_regular"
+                android:textColor="@color/red"
+                android:paddingLeft="@dimen/margin_large"
+                app:typeface="roboto_regular"/>
+
+            <ImageView
+                android:id="@+id/condensed_post_adn_disagrees"
+                android:paddingLeft="@dimen/margin_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/disagree"/>
+
+            <!-- NEWSWORTHIES -->
+            <com.devspark.robototextview.widget.RobotoTextView
+                android:id="@+id/condensed_post_adn_num_newsworthies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sample_num"
+                android:textSize="@dimen/font_size_regular"
+                android:textColor="@color/grey"
+                android:paddingLeft="@dimen/margin_large"
+                app:typeface="roboto_regular"/>
+
+            <ImageView
+                android:id="@+id/condensed_post_adn_newsworthies"
+                android:paddingLeft="@dimen/margin_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/newsworthy"/>
+        </LinearLayout>
+
+
+    <!-- TODO REPLIES -->
+
+</LinearLayout>
