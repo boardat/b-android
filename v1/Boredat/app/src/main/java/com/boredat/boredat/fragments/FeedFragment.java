@@ -25,6 +25,7 @@ import com.boredat.boredat.presentation.Feed.FeedPresenter;
 import com.boredat.boredat.presentation.Feed.FeedView;
 import com.boredat.boredat.presentation.Feed.IFeedPresenter;
 import com.boredat.boredat.ui.IconizedMenu;
+import com.boredat.boredat.util.Constants;
 
 import java.util.List;
 
@@ -264,6 +265,7 @@ public class FeedFragment extends Fragment implements FeedView,
     public void showDetailPost(Post post) {
         Intent intent = new Intent(getActivity(), DetailPostActivity.class);
         intent.putExtra(DetailPostActivity.KEY_POST_ID, post.getPostId());
+        intent.putExtra(DetailPostActivity.KEY_FEED_ID, mFeedId);
         startActivity(intent);
     }
 
@@ -271,6 +273,7 @@ public class FeedFragment extends Fragment implements FeedView,
     public void showReplyToPost(Post post) {
         Intent intent = new Intent(getActivity(), ComposeReplyActivity.class);
         intent.putExtra(ComposeReplyActivity.KEY_POST_ID, post.getPostId());
+        intent.putExtra(ComposeReplyActivity.KEY_FEED_ID, mFeedId);
         startActivity(intent);
     }
 
@@ -323,7 +326,14 @@ public class FeedFragment extends Fragment implements FeedView,
         if (getActivity() != null) {
             if (BoredatApplication.get(getActivity()).getSessionComponent() != null) {
                 if (mService == null) {
-                    BoredatApplication.get(getActivity()).getSessionComponent().inject(this);
+                    switch(mFeedId) {
+                        case Constants.FEED_ID_GLOBAL:
+                            BoredatApplication.get(getActivity()).getGlobalBoardComponent().inject(this);
+                            break;
+                        default:
+                            BoredatApplication.get(getActivity()).getLocalBoardComponent().inject(this);
+                            break;
+                    }
                 }
 
                 if (mPresenter == null) {

@@ -1,5 +1,7 @@
 package com.boredat.boredat;
 
+import com.boredat.boredat.activities.SplashActivity;
+import com.boredat.boredat.fragments.UserFragment;
 import com.boredat.boredat.model.api.SessionComponent;
 import com.boredat.boredat.model.api.SessionModule;
 import com.boredat.boredat.model.authorization.UnauthorizedComponent;
@@ -21,4 +23,7 @@ import dagger.Component;
 public interface AppComponent {
     SessionComponent plus(SessionModule module);
     UnauthorizedComponent plus(UnauthorizedModule module);
+
+    SplashActivity inject(SplashActivity splashActivity);
+    UserFragment inject(UserFragment userFragment);
 }

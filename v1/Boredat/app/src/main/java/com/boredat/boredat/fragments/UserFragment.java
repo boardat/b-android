@@ -11,7 +11,10 @@ import android.widget.Button;
 
 import com.boredat.boredat.BoredatApplication;
 import com.boredat.boredat.R;
+import com.boredat.boredat.SessionManager;
 import com.boredat.boredat.activities.LoginActivity;
+
+import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -22,6 +25,9 @@ import butterknife.ButterKnife;
 public class UserFragment extends Fragment {
     @Bind(R.id.user_sign_out_button)
     Button mSignOutButton;
+
+    @Inject
+    SessionManager sessionManager;
 
     public UserFragment() {
         // Required empty public constructor
@@ -48,7 +54,7 @@ public class UserFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_user, container, false);
         ButterKnife.bind(this, rootView);
 
-
+        BoredatApplication.get(getActivity()).getAppComponent().inject(this);
         mSignOutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,7 +64,9 @@ public class UserFragment extends Fragment {
         return rootView;
     }
 
+
     private void logout() {
+        sessionManager.logout();
         BoredatApplication.get(getActivity()).releaseSessionComponent();
         navigateToLoginActivity();
     }

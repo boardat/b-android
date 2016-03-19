@@ -31,6 +31,16 @@ public class SessionModule {
     }
 
     @Provides @SessionScope
+    AccessToken provideAccessToken() {
+        return this.mAccessToken;
+    }
+
+    @Provides @SessionScope
+    Account provideAccount() {
+        return this.mAccount;
+    }
+
+    @Provides @SessionScope
     OkHttpClient provideOkHttpClient() {
         OkHttpOAuthConsumer consumer = new OkHttpOAuthConsumer(mAccessToken.getConsumerKey(), mAccessToken.getConsumerSecret());
         consumer.setTokenWithSecret(mAccessToken.getToken(), mAccessToken.getTokenSecret());
@@ -43,22 +53,6 @@ public class SessionModule {
                 .build();
 
         return client;
-    }
-
-    @Provides @SessionScope
-    Retrofit provideRetrofit(Gson gson, OkHttpClient okHttpClient) {
-        Retrofit retrofit = new Retrofit.Builder()
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .baseUrl(mAccessToken.getBaseUrl())
-                .client(okHttpClient)
-                .build();
-        return retrofit;
-    }
-
-    @Provides @SessionScope
-    BoredatService provideBoredatService(Retrofit retrofit) {
-        return retrofit.create(BoredatService.class);
     }
 
     @Provides @SessionScope

@@ -8,6 +8,7 @@ import android.widget.Toast;
 import com.android.volley.VolleyError;
 import com.boredat.boredat.BoredatApplication;
 import com.boredat.boredat.R;
+import com.boredat.boredat.SessionManager;
 import com.boredat.boredat.model.api.responses.BoredatResponse;
 import com.boredat.boredat.model.authorization.AccessToken;
 import com.boredat.boredat.model.authorization.Account;
@@ -25,6 +26,9 @@ public class SilentLoginActivity extends AppCompatActivity implements LoginListe
     @Inject
     Authenticator mAuthenticator;
 
+    @Inject
+    SessionManager sessionManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +43,7 @@ public class SilentLoginActivity extends AppCompatActivity implements LoginListe
         if (userId == null || password == null) {
             navigateToLoginActivity();
         } else {
-            if (mAuthenticator == null) {
+            if (BoredatApplication.get(this).getUnauthorizedComponent() == null) {
                 BoredatApplication.get(this).createUnauthorizedComponent(this);
                 BoredatApplication.get(this).getUnauthorizedComponent().inject(this);
             }
@@ -62,6 +66,7 @@ public class SilentLoginActivity extends AppCompatActivity implements LoginListe
 
     @Override
     public void onSuccess(Account account, AccessToken accessToken) {
+        sessionManager.setSessionLogin(account, accessToken);
         BoredatApplication.get(this).createSessionComponent(account, accessToken);
         BoredatApplication.get(this).releaseUnauthorizedComponent();
         navigateToSessionMainActivity();

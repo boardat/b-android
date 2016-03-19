@@ -14,7 +14,6 @@ public class UserPreferences {
     public static final String KEY_NETWORK_SHORT = "userNetworkShortname";
     public static final String KEY_PERSONALITY_NAME = "userPersonalityName";
     public static final String KEY_PERSONALITY_ID = "userPersonalityId";
-    public static final String KEY_IS_USER_LOGGED_IN = "isUserLoggedIn";
     public static final String KEY_HAS_USER_DETAILS = "hasUserDetails";
 
     public static final String PREF_USE_LOCATION = "prefShouldUseLocationDefault";
@@ -22,13 +21,11 @@ public class UserPreferences {
 
     // Member variables
     private SharedPreferences prefs;
-    private Account userAccount;
     private String userKeyPrefix;
 
     // Constructor
     public UserPreferences(SharedPreferences prefs, Account userAccount) {
         this.prefs = prefs;
-        this.userAccount = userAccount;
         String userId = userAccount.getUserId();
         userKeyPrefix = String.format("user:%s/", userId);
     }
@@ -65,21 +62,6 @@ public class UserPreferences {
 
     public String getPersonalityId() {
         return getSavedString(getUserKey(KEY_PERSONALITY_ID));
-    }
-
-    public void loginUser() {
-        saveBoolean(KEY_IS_USER_LOGGED_IN, true);
-    }
-    public void logoutUser() {
-        saveBoolean(KEY_IS_USER_LOGGED_IN, false);
-    }
-
-    public boolean isUserLoggedIn() {
-        return getSavedBoolean(KEY_IS_USER_LOGGED_IN, false);
-    }
-
-    public boolean hasUserDetails() {
-        return getSavedBoolean(KEY_HAS_USER_DETAILS, false);
     }
 
     // Helper methods

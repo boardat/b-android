@@ -9,7 +9,7 @@ public class Constants {
     final static public int PRIVATE_MODE = 0;
 
     final static public String API_ENDPOINT = "https://boredat.com/api/v1/";
-    final static public String API_GLOBAL_ENDPOINT = "https://boredat.com/global/api/v1";
+    final static public String API_GLOBAL_ENDPOINT = "https://boredat.com/global/api/v1/";
 
     public static final String CONSUMER_KEY="d81a0dc62eaa717532d134db065270cb04fab84c1";
     public static final String CONSUMER_SECRET="f7a543570d6a6efdd38d7a9e3a51a2bd";

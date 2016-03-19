@@ -18,9 +18,6 @@ import dagger.Subcomponent;
         }
 )
 public interface SessionComponent {
-    LoungeFragment inject(LoungeFragment loungeFragment);
-    SessionMainActivity inject(SessionMainActivity sessionMainActivity);
-    FeedFragment inject(FeedFragment feedFragment);
-    DetailPostFragment inject(DetailPostFragment detailPostFragment);
-    ComposeNewPostFragment inject(ComposeNewPostFragment composeNewPostFragment);
+    LocalBoardComponent plus(LocalBoardModule localBoardModule);
+    GlobalBoardComponent plus(GlobalBoardModule globalBoardModule);
 }

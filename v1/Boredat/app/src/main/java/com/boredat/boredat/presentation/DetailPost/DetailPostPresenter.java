@@ -107,7 +107,8 @@ public class DetailPostPresenter implements IDetailPostPresenter, DetailPostList
 
     @Override
     public void onVoteAgree(final Post post) {
-        mView.showLocalAgreeVote();
+        post.setLocalHasVotedAgree(true);
+        mView.showLocalAgreeVote(post);
 
         if (mService != null) {
             Observable<ServerMessage> observable = mService.postAgree(String.valueOf(post.getPostId()));
@@ -139,7 +140,8 @@ public class DetailPostPresenter implements IDetailPostPresenter, DetailPostList
 
     @Override
     public void onVoteDisagree(Post post) {
-        mView.showLocalDisagreeVote();
+        post.setLocalHasVotedDisagree(true);
+        mView.showLocalDisagreeVote(post);
 
         if (mService != null) {
             Observable<ServerMessage> observable = mService.postDisagree(String.valueOf(post.getPostId()));
@@ -171,7 +173,8 @@ public class DetailPostPresenter implements IDetailPostPresenter, DetailPostList
 
     @Override
     public void onVoteNewsworthy(Post post) {
-        mView.showLocalNewsworthyVote();
+        post.setLocalHasVotedNewsworthy(true);
+        mView.showLocalNewsworthyVote(post);
 
         Observable<ServerMessage> observable = mService.postNewsworthy(String.valueOf(post.getPostId()));
         mCompositeSubscription.add(observable.observeOn(AndroidSchedulers.mainThread())

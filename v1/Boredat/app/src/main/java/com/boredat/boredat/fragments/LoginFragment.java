@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.android.volley.VolleyError;
 import com.boredat.boredat.BoredatApplication;
 import com.boredat.boredat.R;
+import com.boredat.boredat.SessionManager;
 import com.boredat.boredat.activities.SessionMainActivity;
 import com.boredat.boredat.model.authorization.AccessToken;
 import com.boredat.boredat.model.authorization.Account;
@@ -49,6 +50,9 @@ public class LoginFragment extends Fragment implements LoginView, LoginListener,
     @Inject
     SavedAccountsManager mSavedAccountsManager;
 
+    @Inject
+    SessionManager sessionManager;
+
     @Bind(R.id.login_edit_user_id)
     RobotoAutoCompleteTextView mUserIdEditText;
 
@@ -80,7 +84,7 @@ public class LoginFragment extends Fragment implements LoginView, LoginListener,
 
         BoredatApplication.get(getActivity()).releaseSessionComponent();
 
-        if (mAuthenticator == null) {
+        if (BoredatApplication.get(getActivity()).getUnauthorizedComponent() == null) {
             BoredatApplication.get(getActivity()).createUnauthorizedComponent(this);
             BoredatApplication.get(getActivity()).getUnauthorizedComponent().inject(this);
         }
@@ -156,6 +160,7 @@ public class LoginFragment extends Fragment implements LoginView, LoginListener,
 
     @Override
     public void onSuccess(Account account, AccessToken accessToken) {
+        sessionManager.setSessionLogin(account, accessToken);
         if (mRememberMeCheckbox.isChecked()) {
             mSavedAccountsManager.saveAccount(account);
         }

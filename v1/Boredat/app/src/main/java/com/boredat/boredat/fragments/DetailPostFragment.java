@@ -27,7 +27,7 @@ import com.boredat.boredat.presentation.DetailPost.DetailPostView;
 import com.boredat.boredat.presentation.DetailPost.IDetailPostPresenter;
 import com.boredat.boredat.presentation.DetailPost.DetailPostPresenter;
 import com.boredat.boredat.ui.DividerItemDecoration;
-import com.boredat.boredat.ui.NewsworthyButton;
+import com.boredat.boredat.util.Constants;
 import com.boredat.boredat.util.DateUtils;
 import com.devspark.robototextview.widget.RobotoTextView;
 
@@ -45,9 +45,11 @@ import rx.subscriptions.CompositeSubscription;
 public class DetailPostFragment extends Fragment implements DetailPostView, RepliesAdapter.OnItemClickListener {
     // Constants
     public static final String KEY_POST_ID = "postId";
+    public static final String KEY_FEED_ID = "feedId";
 
     // Member Variables
     private long mPostId;
+    private int mFeedId;
     private IDetailPostPresenter mPresenter;
 
     private boolean mHasReplies = false;
@@ -89,7 +91,7 @@ public class DetailPostFragment extends Fragment implements DetailPostView, Repl
     @Bind(R.id.detail_post_adn_newsworthies)
     ImageView mNewsworthiesImageView;
     @Bind(R.id.detail_post_action_newsworthy)
-    NewsworthyButton mVoteNewsworthyButton;
+    ImageButton mVoteNewsworthyButton;
     @Bind(R.id.detail_post_action_vote_agree)
     ImageButton mVoteAgreeButton;
     @Bind(R.id.detail_post_action_vote_disagree)
@@ -101,12 +103,13 @@ public class DetailPostFragment extends Fragment implements DetailPostView, Repl
         // Required empty public constructor
     }
 
-    public static DetailPostFragment newInstance(long postId) {
+    public static DetailPostFragment newInstance(int feedId, long postId) {
         DetailPostFragment fragment = new DetailPostFragment();
 
         // supply arguments
         Bundle args = new Bundle();
         args.putLong(KEY_POST_ID, postId);
+        args.putInt(KEY_FEED_ID, feedId);
         fragment.setArguments(args);
 
         return fragment;
@@ -119,6 +122,7 @@ public class DetailPostFragment extends Fragment implements DetailPostView, Repl
 
         if (getArguments() != null) {
             mPostId = getArguments().getLong(KEY_POST_ID);
+            mFeedId = getArguments().getInt(KEY_FEED_ID);
         }
     }
 
@@ -219,40 +223,33 @@ public class DetailPostFragment extends Fragment implements DetailPostView, Repl
     }
 
     @Override
-    public void showLocalAgreeVote() {
-        showMessage("local agree vote");
-        mVoteAgreeButton.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_post_agree_selected));
-        mVoteAgreeButton.setEnabled(false);
-        mVoteDisagreeButton.setEnabled(false);
+    public void showLocalAgreeVote(Post post) {
+        showPost(post);
     }
 
     @Override
-    public void showLocalDisagreeVote() {
-        showMessage("local disagree vote");
-        mVoteDisagreeButton.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_post_disagree_selected));
-        mVoteDisagreeButton.setEnabled(false);
-        mVoteAgreeButton.setEnabled(false);
+    public void showLocalDisagreeVote(Post post) {
+        showPost(post);
     }
 
     @Override
-    public void showLocalNewsworthyVote() {
-        showMessage("local newsworthy vote");
-        mVoteNewsworthyButton.setHasVotedNewsworthy(true);
+    public void showLocalNewsworthyVote(Post post) {
+        showPost(post);
     }
 
     @Override
     public void showNetworkAgreeVote() {
-        showMessage("Uploaded agree!");
+        showMessage("Voted agree!");
     }
 
     @Override
     public void showNetworkDisagreeVote() {
-        showMessage("Uploaded disagree!");
+        showMessage("Voted disagree!");
     }
 
     @Override
     public void showNetworkNewsworthyVote() {
-        showMessage("Uploaded newsworthy!");
+        showMessage("Voted newsworthy!");
     }
 
     @Override
@@ -276,6 +273,7 @@ public class DetailPostFragment extends Fragment implements DetailPostView, Repl
     }
 
 
+
     // Helper Methods
 
     private void loadPost() {
@@ -288,7 +286,14 @@ public class DetailPostFragment extends Fragment implements DetailPostView, Repl
 
     private IDetailPostPresenter getPresenter() {
         if (mService == null) {
-            BoredatApplication.get(getActivity()).getSessionComponent().inject(this);
+            switch(mFeedId) {
+                case Constants.FEED_ID_GLOBAL:
+                    BoredatApplication.get(getActivity()).getGlobalBoardComponent().inject(this);
+                    break;
+                default:
+                    BoredatApplication.get(getActivity()).getLocalBoardComponent().inject(this);
+                    break;
+            }
         }
 
         if (mPresenter == null) {
@@ -342,6 +347,19 @@ public class DetailPostFragment extends Fragment implements DetailPostView, Repl
         int numDisagrees = post.getPostTotalDisagrees();
         int numNewsworthies = post.getPostTotalNewsworthies();
 
+
+        if (post.localHasVotedAgree()) {
+            numAgrees++;
+        }
+
+        if (post.localHasVotedDisagree()) {
+            numDisagrees++;
+        }
+
+        if (post.localHasVotedNewsworthy()) {
+            numNewsworthies++;
+        }
+
         // any votes
         if (numAgrees+numDisagrees+numNewsworthies > 0) {
             adn_LL.setVisibility(View.VISIBLE);
@@ -390,29 +408,49 @@ public class DetailPostFragment extends Fragment implements DetailPostView, Repl
         }
     }
 
-    private void setUpNewsworthyButton(NewsworthyButton nb, final Post post) {
-        // todo fix this lol
-        nb.setHasVotedNewsworthy(post.hasVotedNewsworthy());
-
-        nb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getPresenter().onVoteNewsworthy(post);
-            }
-        });
+    private void setUpNewsworthyButton(ImageButton button, final Post post) {
+        // voted newsworthy
+        if (post.hasVotedNewsworthy() || post.localHasVotedNewsworthy()) {
+            // newsworthy is selected and disabled
+            button.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_post_newsworthy_disabled));
+            button.setEnabled(false);
+        } else {
+            button.setEnabled(true);
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    getPresenter().onVoteNewsworthy(post);
+                }
+            });
+        }
     }
 
 
     private void setUpADButtons(ImageButton agreeButton, ImageButton disagreeButton, final Post post) {
-        if (post.hasVotedAgree()) {
-            agreeButton.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_post_agree_selected));
+        // voted agree
+        if (post.hasVotedAgree() || post.localHasVotedAgree()) {
+            // agree is selected and disabled
+            agreeButton.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_detail_post_agree_disabled_selected));
             agreeButton.setEnabled(false);
+
+            // disagree is disabled
+            disagreeButton.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_detail_post_disagree_disabled));
             disagreeButton.setEnabled(false);
-        } else if (post.hasVotedDisagree()) {
-            disagreeButton.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_post_disagree_selected));
+        }
+
+        // voted disagree
+        else if (post.hasVotedDisagree() || post.localHasVotedDisagree()) {
+            // disagree is selected and disabled
+            disagreeButton.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_detail_post_disagree_disabled_selected));
+            disagreeButton.setEnabled(false);
+
+            // agree is disabled
+            agreeButton.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_detail_post_agree_disabled));
             agreeButton.setEnabled(false);
-            disagreeButton.setEnabled(false);
-        } else {
+        }
+
+        // has not voted
+        else {
             agreeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

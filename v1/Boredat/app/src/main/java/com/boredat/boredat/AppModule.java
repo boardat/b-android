@@ -46,4 +46,9 @@ public class AppModule {
 
         return gsonBuilder.create();
     }
+
+    @Provides @Singleton
+    SessionManager provideSessionManager(SharedPreferences prefs, Gson gson) {
+        return new SessionManager(prefs, gson);
+    }
 }

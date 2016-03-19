@@ -1,6 +1,7 @@
 package com.boredat.boredat.fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import com.boredat.boredat.BoredatApplication;
 import com.boredat.boredat.R;
+import com.boredat.boredat.activities.ComposeNewPostActivity;
 import com.boredat.boredat.model.api.UserPreferences;
 import com.boredat.boredat.presentation.Lounge.LoungeView;
 import com.boredat.boredat.util.BoredatUtils;
@@ -27,17 +29,12 @@ import butterknife.ButterKnife;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class LoungeFragment extends Fragment implements LoungeView, AdapterView.OnItemSelectedListener{
-    @Bind(R.id.spinner_nav)
-    Spinner spinner;
-
+public class LoungeFragment extends Fragment implements LoungeView {
     @Bind(R.id.fab)
     FloatingActionButton fab;
 
-    @Inject
-    UserPreferences mUserPrefs;
-
-    private ArrayAdapter<String> mAdapter;
+    private static final String KEY_FEED_ID = "feedId";
+    private int mFeedId;
 
     public LoungeFragment() {
         // Required empty public constructor
@@ -48,14 +45,24 @@ public class LoungeFragment extends Fragment implements LoungeView, AdapterView.
      * this fragment using the provided parameters.
      *
      */
-    public static LoungeFragment newInstance() {
-        return new LoungeFragment();
+    public static LoungeFragment newInstance(int feedId) {
+        LoungeFragment fragment = new LoungeFragment();
+
+        // supply arguments
+        Bundle args = new Bundle();
+        args.putInt(KEY_FEED_ID, feedId);
+        fragment.setArguments(args);
+
+        return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        BoredatApplication.get(getActivity()).getSessionComponent().inject(this);
+
+        if (getArguments() != null) {
+            mFeedId = getArguments().getInt(KEY_FEED_ID);
+        }
     }
 
     @Override
@@ -65,6 +72,16 @@ public class LoungeFragment extends Fragment implements LoungeView, AdapterView.
         View rootView = inflater.inflate(R.layout.fragment_lounge, container, false);
         ButterKnife.bind(this, rootView);
 
+
+        switch(mFeedId) {
+            case Constants.FEED_ID_GLOBAL:
+                BoredatApplication.get(getActivity()).getGlobalBoardComponent().inject(this);
+                break;
+            default:
+                BoredatApplication.get(getActivity()).getLocalBoardComponent().inject(this);
+                break;
+        }
+
         return rootView;
     }
 
@@ -72,63 +89,24 @@ public class LoungeFragment extends Fragment implements LoungeView, AdapterView.
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        String local = getString(R.string.spinner_lounge_local);
-        String global = getString(R.string.spinner_lounge_global);
-
-        // TODO: FIX GET LOCAL BOARD NAME FROM USER PREFS
-        if (mUserPrefs != null) {
-            if (mUserPrefs.hasUserDetails() && mUserPrefs.getNetworkShortname() != null) {
-                local = BoredatUtils.createLocalTitle(mUserPrefs.getNetworkShortname());
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigateToComposeNewPostActivity();
             }
-        }
+        });
 
-        String[] options = {
-                local,
-                global
-        };
-
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        mAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, options);
-
-        // Specify the layout to use when the list of choices appears
-        mAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        // Apply the adapter to the spinner
-        spinner.setAdapter(mAdapter);
-        // Specify the interface implementation
-        spinner.setOnItemSelectedListener(this);
+        showBoard();
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-        // An item was selected. Retrieve the selected item using
-        // parent.getItemAtPosition(pos)
-
-        if (position == 1) {
-            showGlobalBoard();
-        } else {
-            showLocalBoard();
-        }
+    private void navigateToComposeNewPostActivity() {
+//        Intent intent = new Intent(getActivity(), ComposeNewPostActivity.class);
+        showMessage("navigateToComposeNewPostActivity");
     }
-
     @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-        // Another interface callback
-
-    }
-
-    @Override
-    public void showLocalBoard() {
+    public void showBoard() {
         getChildFragmentManager().beginTransaction()
-                .add(R.id.fragment_container, FeedFragment.newInstance(Constants.FEED_ID_LOCAL))
-                .commit();
-    }
-
-    @Override
-    public void showGlobalBoard() {
-        getChildFragmentManager().beginTransaction()
-                .add(R.id.fragment_container, FeedFragment.newInstance(Constants.FEED_ID_GLOBAL))
+                .add(R.id.fragment_container, FeedFragment.newInstance(mFeedId))
                 .commit();
     }
 

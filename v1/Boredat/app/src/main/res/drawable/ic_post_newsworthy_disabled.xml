@@ -4,7 +4,8 @@
     android:height="24dp"
     android:viewportWidth="24.0"
     android:viewportHeight="24.0"
-    android:tint="@color/newsworthy">
+    android:tint="@color/newsworthy"
+    >
     <path
         android:fillColor="#FF000000"
         android:pathData="M17,3

@@ -116,6 +116,8 @@ public class FeedPresenter implements IFeedPresenter, FeedListener {
         switch(mView.getFeedId()) {
             case Constants.FEED_ID_LOCAL:
                 return mService.getPostsWithPage(pageNum);
+            case Constants.FEED_ID_GLOBAL:
+                return mService.getPostsWithPage(pageNum);
             case Constants.FEED_ID_WEEKS_BEST:
                 return mService.getWeeksBestWithPage(pageNum);
             case Constants.FEED_ID_WEEKS_WORST:

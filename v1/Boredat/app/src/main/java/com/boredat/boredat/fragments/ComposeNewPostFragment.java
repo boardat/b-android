@@ -33,11 +33,13 @@ import butterknife.ButterKnife;
 public class ComposeNewPostFragment extends Fragment implements OnItemSelectedListener {
     // Constants
     public static final String KEY_REPLY_TO_POST_ID = "replyToPostId";
+    public static final String KEY_FEED_ID = "feedId";
     public static final long NEW_POST = -420;
 
     // Member Variables
     private boolean isReply = true;
     private long mReplyToPostId;
+    private int mFeedId;
     private IComposePresenter mPresenter;
     private ArrayAdapter<String> mArrayAdapter;
 

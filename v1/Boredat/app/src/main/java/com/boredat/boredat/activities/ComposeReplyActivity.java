@@ -7,6 +7,9 @@ import com.boredat.boredat.R;
 
 public class ComposeReplyActivity extends AppCompatActivity {
     public static String KEY_POST_ID = "postId";
+    public static String KEY_FEED_ID = "feedId";
+
+    private int mFeedId;
     private long mPostId;
 
     @Override
@@ -18,6 +21,7 @@ public class ComposeReplyActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             mPostId = bundle.getLong(KEY_POST_ID);
+            mFeedId = bundle.getInt(KEY_FEED_ID);
         }
 
     }

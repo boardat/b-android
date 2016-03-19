@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -28,7 +27,7 @@
             android:layout_height="wrap_content"
             android:text="@string/sample_personality_name"
             android:textSize="@dimen/font_size_small"
-            android:textColor="@color/primary_text"
+            android:textColor="@color/primaryText"
             android:paddingTop="@dimen/margin_small"
             android:paddingLeft="@dimen/margin_large"
             app:typeface="roboto_condensed_regular"/>
@@ -41,7 +40,7 @@
             android:textSize="14sp"
             android:paddingTop="@dimen/margin_small"
             android:paddingLeft="@dimen/margin_large"
-            android:textColor="@color/primary_text"
+            android:textColor="@color/primaryText"
             app:typeface="roboto_condensed_regular" />
 
         <com.devspark.robototextview.widget.RobotoTextView
@@ -54,7 +53,7 @@
             android:paddingLeft="@dimen/margin_large"
             android:paddingRight="@dimen/margin_large"
             app:typeface="roboto_condensed_regular"
-            android:textColor="@color/secondary_text"/>
+            android:textColor="@color/secondaryText"/>
     </LinearLayout>
 
     <include layout="@layout/divider"/>
@@ -69,7 +68,7 @@
         android:layout_height="wrap_content"
         android:text="@string/hello_blank_fragment"
         android:textSize="@dimen/font_size_regular"
-        android:textColor="@color/primary_text"
+        android:textColor="@color/primaryText"
         app:typeface="roboto_regular"/>
 
     <!-- ADN Widget -->
@@ -88,7 +87,7 @@
             android:layout_height="wrap_content"
             android:text="@string/sample_num"
             android:textSize="@dimen/font_size_regular"
-            android:textColor="@color/green"
+            android:textColor="@color/agree"
             android:paddingLeft="@dimen/activity_vertical_margin"
             app:typeface="roboto_regular"/>
 
@@ -106,7 +105,7 @@
             android:layout_height="wrap_content"
             android:text="@string/sample_num"
             android:textSize="@dimen/font_size_regular"
-            android:textColor="@color/red"
+            android:textColor="@color/disagree"
             android:paddingLeft="@dimen/margin_large"
             app:typeface="roboto_regular"/>
 
@@ -124,7 +123,7 @@
             android:layout_height="wrap_content"
             android:text="@string/sample_num"
             android:textSize="@dimen/font_size_regular"
-            android:textColor="@color/grey"
+            android:textColor="@color/newsworthy"
             android:paddingLeft="@dimen/margin_large"
             app:typeface="roboto_regular"/>
 
@@ -153,7 +152,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:padding="8dp"
-            android:src="@drawable/ic_post_agree_enabled"
+            android:src="@drawable/ic_detail_post_agree_enabled"
             style="@style/Base.Widget.AppCompat.ButtonBar" />
 
         <!-- VOTE DISAGREE -->
@@ -164,18 +163,18 @@
             android:layout_toRightOf="@+id/detail_post_action_vote_agree"
             android:layout_toEndOf="@+id/detail_post_action_vote_agree"
             android:padding="8dp"
-            android:src="@drawable/ic_post_disagree_enabled"
+            android:src="@drawable/ic_detail_post_disagree_enabled"
             style="@style/Base.Widget.AppCompat.ButtonBar" />
 
         <!-- VOTE NEWSWORTHY -->
-        <com.boredat.boredat.ui.NewsworthyButton
+        <ImageButton
             android:id="@+id/detail_post_action_newsworthy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/detail_post_action_vote_disagree"
             android:layout_toEndOf="@+id/detail_post_action_vote_disagree"
             android:padding="8dp"
-            android:src="@drawable/newsworthy_button"
+            android:src="@drawable/ic_post_newsworthy_enabled"
             style="@style/Base.Widget.AppCompat.ButtonBar"/>
 
 
@@ -187,7 +186,7 @@
             android:padding="8dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:src="@drawable/ic_post_more_horiz"
+            android:src="@drawable/ic_detail_post_more_horiz"
             style="@style/Base.Widget.AppCompat.ButtonBar"/>
 
     </RelativeLayout>

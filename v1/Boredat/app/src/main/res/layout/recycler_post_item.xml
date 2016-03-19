@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/sample_personality_name"
                 android:textSize="@dimen/font_size_small"
-                android:textColor="@color/primary_text"
+                android:textColor="@color/primaryText"
                 android:paddingTop="@dimen/margin_small"
                 android:paddingLeft="@dimen/margin_large"
                 app:typeface="roboto_condensed_regular"/>
@@ -49,7 +49,7 @@
                 android:textSize="14sp"
                 android:paddingTop="@dimen/margin_small"
                 android:paddingLeft="@dimen/margin_large"
-                android:textColor="@color/primary_text"
+                android:textColor="@color/primaryText"
                 app:typeface="roboto_condensed_regular" />
 
             <com.devspark.robototextview.widget.RobotoTextView
@@ -62,7 +62,7 @@
                 android:paddingLeft="@dimen/margin_large"
                 android:paddingRight="@dimen/margin_large"
                 app:typeface="roboto_condensed_regular"
-                android:textColor="@color/secondary_text"/>
+                android:textColor="@color/secondaryText"/>
         </LinearLayout>
 
         <include layout="@layout/divider"/>
@@ -77,7 +77,7 @@
             android:layout_height="wrap_content"
             android:text="@string/hello_blank_fragment"
             android:textSize="@dimen/font_size_regular"
-            android:textColor="@color/primary_text"
+            android:textColor="@color/primaryText"
             app:typeface="roboto_regular"/>
 
         <!-- ADN Widget -->
@@ -96,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/sample_num"
                 android:textSize="@dimen/font_size_regular"
-                android:textColor="@color/green"
+                android:textColor="@color/agree"
                 android:paddingLeft="@dimen/activity_vertical_margin"
                 app:typeface="roboto_regular"/>
 
@@ -114,7 +114,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/sample_num"
                 android:textSize="@dimen/font_size_regular"
-                android:textColor="@color/red"
+                android:textColor="@color/disagree"
                 android:paddingLeft="@dimen/margin_large"
                 app:typeface="roboto_regular"/>
 
@@ -132,7 +132,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/sample_num"
                 android:textSize="@dimen/font_size_regular"
-                android:textColor="@color/grey"
+                android:textColor="@color/newsworthy"
                 android:paddingLeft="@dimen/margin_large"
                 app:typeface="roboto_regular"/>
 
@@ -155,7 +155,7 @@
              <!--REPLY-->
             <Button
                 android:id="@+id/post_action_reply"
-                android:layout_width="72dp"
+                android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
@@ -179,16 +179,15 @@
                 android:src="@drawable/ic_post_vote_enabled"
                 style="@style/Base.Widget.AppCompat.ButtonBar" />
 
-            <!-- VOTE NEWSWORTHY -->
-            <com.boredat.boredat.ui.NewsworthyButton
+            <ImageButton
                 android:id="@+id/post_action_newsworthy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toLeftOf="@+id/post_action_vote_ad"
                 android:layout_toStartOf="@+id/post_action_vote_ad"
                 android:padding="8dp"
-                android:src="@drawable/newsworthy_button"
-                style="@style/Base.Widget.AppCompat.ButtonBar"/>
+                android:src="@drawable/ic_post_newsworthy_enabled"
+                style="@style/Base.Widget.AppCompat.ButtonBar" />
 
         </RelativeLayout>
 

@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scrollbars="vertical"
-            android:background="@color/primary_light"/>
+            android:background="?attr/colorPrimary" />
 
         <include layout="@layout/empty" />
 

@@ -15,7 +15,6 @@ import java.util.List;
 public class SavedAccountsManager {
     // Constants
     final static public String KEY_SAVED_ACCOUNTS = "savedAccounts";
-    final static public String KEY_LOGGED_IN_ACCOUNT = "loggedInAccount";
     final static public String KEY_LAST_USED_ACCOUNT = "lastUsedAccount";
 
     // Member Variables
@@ -51,6 +50,9 @@ public class SavedAccountsManager {
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString(KEY_SAVED_ACCOUNTS, json);
         editor.commit();
+
+        // set account as last used account
+        setLastUsedAccount(account);
     }
 
     public Account getAccountForUserId(String id) {
@@ -98,22 +100,6 @@ public class SavedAccountsManager {
         }
 
         return null;
-    }
-
-    public Account getLoggedInAccount() {
-        String json = prefs.getString(KEY_LOGGED_IN_ACCOUNT, null);
-        if (json != null) {
-            Type type = new TypeToken<Account>(){}.getType();
-            return gson.fromJson(json, type);
-        }
-        return null;
-    }
-
-    public void setLoggedInAccount(Account account) {
-        String json = gson.toJson(account);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putString(KEY_LOGGED_IN_ACCOUNT, json);
-        editor.commit();
     }
 
     public Account getLastUsedAccount() {

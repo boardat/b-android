@@ -13,7 +13,11 @@ import com.boredat.boredat.fragments.DetailPostFragment;
 
 public class DetailPostActivity extends AppCompatActivity {
     public static String KEY_POST_ID = "postId";
+    public static String KEY_FEED_ID = "feedId";
+
+
     private long mPostId;
+    private int mFeedId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +28,7 @@ public class DetailPostActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             mPostId = bundle.getLong(KEY_POST_ID);
+            mFeedId = bundle.getInt(KEY_FEED_ID);
         }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -36,8 +41,7 @@ public class DetailPostActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                navigateToComposeReplyActivity();
 
 
             }
@@ -46,7 +50,7 @@ public class DetailPostActivity extends AppCompatActivity {
 
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.fragment_container, DetailPostFragment.newInstance(mPostId))
+                .replace(R.id.fragment_container, DetailPostFragment.newInstance(mFeedId, mPostId))
                 .commit();
     }
 
@@ -54,6 +58,7 @@ public class DetailPostActivity extends AppCompatActivity {
     private void navigateToComposeReplyActivity() {
         Intent intent = new Intent(this, ComposeReplyActivity.class);
         intent.putExtra(ComposeReplyActivity.KEY_POST_ID, mPostId);
+        intent.putExtra(ComposeReplyActivity.KEY_FEED_ID, mFeedId);
         startActivity(intent);
     }
 

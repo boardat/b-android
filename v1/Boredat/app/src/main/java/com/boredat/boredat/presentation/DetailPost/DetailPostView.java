@@ -11,9 +11,9 @@ public interface DetailPostView {
     void showMessage(String text);
     void showPost(Post post);
 
-    void showLocalAgreeVote();
-    void showLocalDisagreeVote();
-    void showLocalNewsworthyVote();
+    void showLocalAgreeVote(Post post);
+    void showLocalDisagreeVote(Post post);
+    void showLocalNewsworthyVote(Post post);
 
     void showNetworkAgreeVote();
     void showNetworkDisagreeVote();

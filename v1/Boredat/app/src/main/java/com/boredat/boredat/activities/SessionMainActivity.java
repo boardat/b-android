@@ -20,6 +20,7 @@ import com.boredat.boredat.model.api.BoredatService;
 import com.boredat.boredat.model.api.UserPreferences;
 import com.boredat.boredat.presentation.SessionMain.ISessionMainPresenter;
 import com.boredat.boredat.presentation.SessionMain.SessionMainPresenter;
+import com.boredat.boredat.util.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,10 +42,11 @@ public class SessionMainActivity extends AppCompatActivity {
     ISessionMainPresenter mPresenter;
 
     private int[] tabIcons = {
-            R.drawable.ic_tab_lounge,
+            R.drawable.ic_tab_local_lounge,
             R.drawable.ic_tab_zeitgeist,
             R.drawable.ic_tab_inbox,
             R.drawable.ic_tab_user,
+            R.drawable.ic_tab_global_lounge,
             R.drawable.ic_tab_more_info
     };
     @Override
@@ -52,7 +54,7 @@ public class SessionMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_session_main);
 
-        BoredatApplication.get(this).getSessionComponent().inject(this);
+        BoredatApplication.get(this).getLocalBoardComponent().inject(this);
 
 
 
@@ -94,10 +96,11 @@ public class SessionMainActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(LoungeFragment.newInstance(), "LOUNGE");
+        adapter.addFragment(LoungeFragment.newInstance(Constants.FEED_ID_LOCAL), "LOCAL LOUNGE");
         adapter.addFragment(ZeitgeistFragment.newInstance(), "ZEITGEIST");
         adapter.addFragment(InboxFragment.newInstance(), "INBOX");
         adapter.addFragment(UserFragment.newInstance(), "USER");
+        adapter.addFragment(LoungeFragment.newInstance(Constants.FEED_ID_GLOBAL), "GLOBAL LOUNGE");
         adapter.addFragment(MoreInfoFragment.newInstance(), "ABOUT");
         viewPager.setAdapter(adapter);
     }

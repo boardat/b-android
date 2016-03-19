@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/sample_personality_name"
                 android:textSize="@dimen/font_size_small"
-                android:textColor="@color/primary_text"
+                android:textColor="@color/primaryText"
                 android:paddingTop="@dimen/margin_small"
                 android:paddingLeft="@dimen/margin_large"
                 app:typeface="roboto_condensed_regular"/>
@@ -39,7 +39,7 @@
                 android:textSize="14sp"
                 android:paddingTop="@dimen/margin_small"
                 android:paddingLeft="@dimen/margin_large"
-                android:textColor="@color/primary_text"
+                android:textColor="@color/primaryText"
                 app:typeface="roboto_condensed_regular" />
 
             <com.devspark.robototextview.widget.RobotoTextView
@@ -52,7 +52,7 @@
                 android:paddingLeft="@dimen/margin_large"
                 android:paddingRight="@dimen/margin_large"
                 app:typeface="roboto_condensed_regular"
-                android:textColor="@color/secondary_text"/>
+                android:textColor="@color/secondaryText"/>
         </LinearLayout>
 
         <!-- Post content -->
@@ -65,7 +65,7 @@
             android:layout_height="wrap_content"
             android:text="@string/hello_blank_fragment"
             android:textSize="@dimen/font_size_regular"
-            android:textColor="@color/primary_text"
+            android:textColor="@color/primaryText"
             app:typeface="roboto_regular"/>
 
         <!-- ADN Widget -->
@@ -84,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/sample_num"
                 android:textSize="@dimen/font_size_regular"
-                android:textColor="@color/green"
+                android:textColor="@color/agree"
                 android:paddingLeft="@dimen/activity_vertical_margin"
                 app:typeface="roboto_regular"/>
 
@@ -102,7 +102,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/sample_num"
                 android:textSize="@dimen/font_size_regular"
-                android:textColor="@color/red"
+                android:textColor="@color/disagree"
                 android:paddingLeft="@dimen/margin_large"
                 app:typeface="roboto_regular"/>
 
@@ -120,7 +120,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/sample_num"
                 android:textSize="@dimen/font_size_regular"
-                android:textColor="@color/grey"
+                android:textColor="@color/newsworthy"
                 android:paddingLeft="@dimen/margin_large"
                 app:typeface="roboto_regular"/>
 

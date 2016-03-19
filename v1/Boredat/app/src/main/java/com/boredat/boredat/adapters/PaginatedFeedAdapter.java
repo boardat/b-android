@@ -16,7 +16,6 @@ import android.widget.TextView;
 
 import com.boredat.boredat.R;
 import com.boredat.boredat.model.api.responses.Post;
-import com.boredat.boredat.ui.NewsworthyButton;
 import com.boredat.boredat.util.DateUtils;
 import com.devspark.robototextview.widget.RobotoTextView;
 
@@ -359,6 +358,19 @@ public class PaginatedFeedAdapter extends FeedAdapter {
         int numDisagrees = post.getPostTotalDisagrees();
         int numNewsworthies = post.getPostTotalNewsworthies();
 
+        // increment if user has voted on the post
+        if (post.localHasVotedAgree()) {
+            numAgrees++;
+        }
+
+        if (post.localHasVotedDisagree()) {
+            numDisagrees++;
+        }
+
+        if (post.localHasVotedNewsworthy()) {
+            numNewsworthies++;
+        }
+
         // any votes
         if (numAgrees+numDisagrees+numNewsworthies > 0) {
             adn_LL.setVisibility(View.VISIBLE);
@@ -411,23 +423,34 @@ public class PaginatedFeedAdapter extends FeedAdapter {
         if (post.getPostTotalReplies() == 0) {
             button.setText("");
         } else {
-            String replyCount = String.format("%d", post.getPostTotalReplies());
+            String replyCount = String.format("%d replies", post.getPostTotalReplies());
             button.setText(replyCount);
         }
     }
 
-    private void setUpNewsworthyButton(NewsworthyButton nb, Post post) {
-        nb.setHasVotedNewsworthy(post.hasVotedNewsworthy());
-    }
-
-    // TODO implement this!!!
-    private void setUpADButton(ImageButton button, Post post) {
-        if (post.hasVotedAgree()) {
-            // green disabled
-        } else if (post.hasVotedDisagree()) {
-            // red disabled
+    private void setUpNewsworthyButton(ImageButton button, Post post) {
+        if (post.hasVotedNewsworthy() || post.localHasVotedNewsworthy()) {
+            // selected disabled
+            button.setImageDrawable(ContextCompat.getDrawable(mCtx, R.drawable.ic_post_newsworthy_disabled));
+            button.setEnabled(false);
         } else {
             // enabled
+            button.setEnabled(true);
+        }
+    }
+
+    private void setUpADButton(ImageButton button, Post post) {
+        if (post.hasVotedAgree() || post.localHasVotedAgree()) {
+            // green disabled
+            button.setImageDrawable(ContextCompat.getDrawable(mCtx, R.drawable.ic_post_vote_disabled_green));
+            button.setEnabled(false);
+        } else if (post.hasVotedDisagree() || post.localHasVotedDisagree()) {
+            // red disabled
+            button.setImageDrawable(ContextCompat.getDrawable(mCtx, R.drawable.ic_post_vote_disabled_red));
+            button.setEnabled(false);
+        } else {
+            // enabled
+            button.setEnabled(true);
         }
     }
 
@@ -480,7 +503,7 @@ public class PaginatedFeedAdapter extends FeedAdapter {
         @Bind(R.id.post_action_reply)
         Button mReplyButton;
         @Bind(R.id.post_action_newsworthy)
-        NewsworthyButton mVoteNewsworthyButton;
+        ImageButton mVoteNewsworthyButton;
         @Bind(R.id.post_action_vote_ad)
         ImageButton mVoteADButton;
 
