@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface DetailPostView {
     void showMessage(String text);
-    void showPost(Post post);
+    void showDetailPost(Post post);
 
     void showLocalAgreeVote(Post post);
     void showLocalDisagreeVote(Post post);
@@ -18,9 +18,4 @@ public interface DetailPostView {
     void showNetworkAgreeVote();
     void showNetworkDisagreeVote();
     void showNetworkNewsworthyVote();
-
-    void showNoReplies();
-    void showLoadingPostReplies();
-    void hideLoadingPostReplies();
-    void showPostReplies(List<Post> replies);
 }

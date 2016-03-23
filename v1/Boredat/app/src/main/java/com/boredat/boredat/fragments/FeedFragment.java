@@ -16,7 +16,6 @@ import android.widget.Toast;
 
 import com.boredat.boredat.BoredatApplication;
 import com.boredat.boredat.R;
-import com.boredat.boredat.activities.ComposeReplyActivity;
 import com.boredat.boredat.activities.DetailPostActivity;
 import com.boredat.boredat.adapters.PaginatedFeedAdapter;
 import com.boredat.boredat.model.api.BoredatService;
@@ -271,10 +270,6 @@ public class FeedFragment extends Fragment implements FeedView,
 
     @Override
     public void showReplyToPost(Post post) {
-        Intent intent = new Intent(getActivity(), ComposeReplyActivity.class);
-        intent.putExtra(ComposeReplyActivity.KEY_POST_ID, post.getPostId());
-        intent.putExtra(ComposeReplyActivity.KEY_FEED_ID, mFeedId);
-        startActivity(intent);
     }
 
     @Override

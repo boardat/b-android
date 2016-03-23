@@ -179,15 +179,15 @@
 
 
         <!--MORE-->
-        <ImageButton
-            android:id="@+id/detail_post_action_more"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:src="@drawable/ic_detail_post_more_horiz"
-            style="@style/Base.Widget.AppCompat.ButtonBar"/>
+        <!--<ImageButton-->
+            <!--android:id="@+id/detail_post_action_more"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:padding="8dp"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_alignParentEnd="true"-->
+            <!--android:src="@drawable/ic_detail_post_more_horiz"-->
+            <!--style="@style/Base.Widget.AppCompat.ButtonBar"/>-->
 
     </RelativeLayout>
 </LinearLayout>

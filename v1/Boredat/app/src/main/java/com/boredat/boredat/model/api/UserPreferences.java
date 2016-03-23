@@ -17,7 +17,7 @@ public class UserPreferences {
     public static final String KEY_HAS_USER_DETAILS = "hasUserDetails";
 
     public static final String PREF_USE_LOCATION = "prefShouldUseLocationDefault";
-    public static final String PREF_USE_PERSONALITY = "prefShouldUsePersonalityDefault";
+    public static final String PREF_POST_ANONYMOUSLY = "prefShouldUseAnonymousDefault";
 
     // Member variables
     private SharedPreferences prefs;
@@ -40,12 +40,13 @@ public class UserPreferences {
         saveBoolean(KEY_HAS_USER_DETAILS, true);
     }
 
-    public void saveUseLocationPref(boolean value) {
-        saveBoolean(PREF_USE_LOCATION, value);
+
+    public void savePostAnonymouslyPref(boolean value) {
+        saveBoolean(PREF_POST_ANONYMOUSLY, value);
     }
 
-    public void saveUsePersonalityPref(boolean value) {
-        saveBoolean(PREF_USE_PERSONALITY, value);
+    public boolean getPostAnonymouslyPref() {
+        return getSavedBoolean(PREF_POST_ANONYMOUSLY, true);
     }
 
     public String getNetworkName() {

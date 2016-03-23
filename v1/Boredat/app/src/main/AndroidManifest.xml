@@ -20,12 +20,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.LoginActivity" />
-        <activity android:name=".activities.ComposeNewPostActivity" />
-        <activity android:name=".activities.ComposeReplyActivity" />
+        <activity android:name=".activities.LoginActivity"
+            android:windowSoftInputMode="stateVisible"/>
+        <activity android:name=".activities.ComposeNewPostActivity"
+            android:windowSoftInputMode="stateVisible"/>
         <activity
             android:name=".activities.DetailPostActivity"
-            android:label="@string/title_activity_detail_post"/>
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".activities.SessionMainActivity"
             android:label="@string/title_activity_main_session" />

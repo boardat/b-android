@@ -107,4 +107,13 @@
 
     <string name="dialog_logging_in">Logging in...</string>
 
+    <string name="anonymous">anonymous</string>
+
+    <string name="create_new_reply_hint">Type your reply here...</string>
+
+
+    <string-array name="compose_spinner_array">
+        <item>@string/anonymous</item>
+    </string-array>
+
 </resources>

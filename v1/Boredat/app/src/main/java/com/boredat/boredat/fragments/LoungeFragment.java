@@ -100,8 +100,9 @@ public class LoungeFragment extends Fragment implements LoungeView {
     }
 
     private void navigateToComposeNewPostActivity() {
-//        Intent intent = new Intent(getActivity(), ComposeNewPostActivity.class);
-        showMessage("navigateToComposeNewPostActivity");
+        Intent intent = new Intent(getActivity(), ComposeNewPostActivity.class);
+        intent.putExtra(ComposeNewPostActivity.KEY_FEED_ID, mFeedId);
+        startActivity(intent);
     }
     @Override
     public void showBoard() {

@@ -1,8 +1,8 @@
 package com.boredat.boredat.model.api;
 
+import com.boredat.boredat.activities.ComposeNewPostActivity;
+import com.boredat.boredat.activities.DetailPostActivity;
 import com.boredat.boredat.activities.SessionMainActivity;
-import com.boredat.boredat.fragments.ComposeNewPostFragment;
-import com.boredat.boredat.fragments.DetailPostFragment;
 import com.boredat.boredat.fragments.FeedFragment;
 import com.boredat.boredat.fragments.LoungeFragment;
 
@@ -21,6 +21,7 @@ public interface GlobalBoardComponent {
     LoungeFragment inject(LoungeFragment loungeFragment);
     SessionMainActivity inject(SessionMainActivity sessionMainActivity);
     FeedFragment inject(FeedFragment feedFragment);
-    DetailPostFragment inject(DetailPostFragment detailPostFragment);
-    ComposeNewPostFragment inject(ComposeNewPostFragment composeNewPostFragment);
+    ComposeNewPostActivity inject(ComposeNewPostActivity composeNewPostActivity);
+    DetailPostActivity inject(DetailPostActivity detailPostActivity);
+
 }

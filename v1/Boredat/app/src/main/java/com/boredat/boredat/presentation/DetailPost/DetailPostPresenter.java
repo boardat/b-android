@@ -22,7 +22,6 @@ public class DetailPostPresenter implements IDetailPostPresenter, DetailPostList
     // Member Variables
     private final DetailPostView mView;
     private BoredatService mService;
-    private CompositeSubscription mCompositeSubscription;
 
     // Constructor
     public DetailPostPresenter(BoredatService service, DetailPostView view) {
@@ -30,23 +29,12 @@ public class DetailPostPresenter implements IDetailPostPresenter, DetailPostList
         mView = view;
     }
 
-    // Lifecycle Methods
-    @Override
-    public void start(CompositeSubscription compositeSubscription) {
-        mCompositeSubscription = compositeSubscription;
-    }
-
-    @Override
-    public void finish() {
-        mCompositeSubscription.unsubscribe();
-    }
-
     // Presentation
     @Override
-    public void onLoadPost(long postId) {
+    public void onLoadDetailPost(long postId) {
         if (mService != null) {
             Observable<Post> observable = mService.getPost(String.valueOf(postId));
-            mCompositeSubscription.add(observable.observeOn(AndroidSchedulers.mainThread())
+            observable.observeOn(AndroidSchedulers.mainThread())
                             .subscribeOn(Schedulers.newThread())
                             .subscribe(new Subscriber<Post>() {
                                 @Override
@@ -62,48 +50,16 @@ public class DetailPostPresenter implements IDetailPostPresenter, DetailPostList
                                 @Override
                                 public void onNext(Post post) {
                                     if (!post.isError()) {
-                                        mView.showPost(post);
+                                        mView.showDetailPost(post);
                                     } else {
                                         onServerError(post.getError());
                                     }
                                 }
-                            })
+                            }
             );
         }
     }
 
-    @Override
-    public void onLoadReplies(long postId) {
-        mView.showLoadingPostReplies();
-
-        if (mService != null) {
-            Observable<PostsListResponse> observable = mService.getPostReplies(String.valueOf(postId));
-            mCompositeSubscription.add(observable.observeOn(AndroidSchedulers.mainThread())
-                            .subscribeOn(Schedulers.newThread())
-                            .subscribe(new Subscriber<PostsListResponse>() {
-                                @Override
-                                public void onCompleted() {
-                                    Log.d(Constants.TAG, "onCompleted loadReplies");
-                                }
-
-                                @Override
-                                public void onError(Throwable e) {
-                                    e.printStackTrace();
-                                }
-
-                                @Override
-                                public void onNext(PostsListResponse postsListResponse) {
-                                    mView.hideLoadingPostReplies();
-                                    if (!postsListResponse.isError()) {
-                                        mView.showPostReplies(postsListResponse.getPostsList());
-                                    } else {
-                                        onServerError(postsListResponse.getError());
-                                    }
-                                }
-                            })
-            );
-        }
-    }
 
     @Override
     public void onVoteAgree(final Post post) {
@@ -112,7 +68,7 @@ public class DetailPostPresenter implements IDetailPostPresenter, DetailPostList
 
         if (mService != null) {
             Observable<ServerMessage> observable = mService.postAgree(String.valueOf(post.getPostId()));
-            mCompositeSubscription.add(observable.observeOn(AndroidSchedulers.mainThread())
+            observable.observeOn(AndroidSchedulers.mainThread())
                             .subscribeOn(Schedulers.newThread())
                             .subscribe(new Subscriber<ServerMessage>() {
                                 @Override
@@ -133,7 +89,7 @@ public class DetailPostPresenter implements IDetailPostPresenter, DetailPostList
                                         onServerError(serverMessage.getError());
                                     }
                                 }
-                            })
+                            }
             );
         }
     }
@@ -145,7 +101,7 @@ public class DetailPostPresenter implements IDetailPostPresenter, DetailPostList
 
         if (mService != null) {
             Observable<ServerMessage> observable = mService.postDisagree(String.valueOf(post.getPostId()));
-            mCompositeSubscription.add(observable.observeOn(AndroidSchedulers.mainThread())
+            observable.observeOn(AndroidSchedulers.mainThread())
                             .subscribeOn(Schedulers.newThread())
                             .subscribe(new Subscriber<ServerMessage>() {
                                 @Override
@@ -166,7 +122,7 @@ public class DetailPostPresenter implements IDetailPostPresenter, DetailPostList
                                         onServerError(serverMessage.getError());
                                     }
                                 }
-                            })
+                            }
             );
         }
     }
@@ -177,7 +133,7 @@ public class DetailPostPresenter implements IDetailPostPresenter, DetailPostList
         mView.showLocalNewsworthyVote(post);
 
         Observable<ServerMessage> observable = mService.postNewsworthy(String.valueOf(post.getPostId()));
-        mCompositeSubscription.add(observable.observeOn(AndroidSchedulers.mainThread())
+        observable.observeOn(AndroidSchedulers.mainThread())
                         .subscribeOn(Schedulers.newThread())
                         .subscribe(new Subscriber<ServerMessage>() {
                             @Override
@@ -198,7 +154,7 @@ public class DetailPostPresenter implements IDetailPostPresenter, DetailPostList
                                     onServerError(serverMessage.getError());
                                 }
                             }
-                        })
+                        }
         );
     }
 

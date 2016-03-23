@@ -23,10 +23,10 @@ import butterknife.ButterKnife;
 public class RepliesAdapter extends FeedAdapter {
     // Member Variables
     private Context mCtx;
-    private OnItemClickListener mOnItemClickListener;
+    private OnReplyItemClickListener mOnReplyItemClickListener;
 
     // Interfaces
-    public interface OnItemClickListener {
+    public interface OnReplyItemClickListener {
         void onItemClick(int position, View view);
     }
 
@@ -36,8 +36,8 @@ public class RepliesAdapter extends FeedAdapter {
         mCtx = context;
     }
 
-    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
-        this.mOnItemClickListener = onItemClickListener;
+    public void setOnItemClickListener(OnReplyItemClickListener onReplyItemClickListener) {
+        this.mOnReplyItemClickListener = onReplyItemClickListener;
     }
 
     // Adapter Methods
@@ -52,8 +52,8 @@ public class RepliesAdapter extends FeedAdapter {
             public void onClick(View v) {
                 int adapterPos = holder.getAdapterPosition();
                 if (adapterPos != RecyclerView.NO_POSITION) {
-                    if (mOnItemClickListener != null) {
-                        mOnItemClickListener.onItemClick(adapterPos, holder.mItemView);
+                    if (mOnReplyItemClickListener != null) {
+                        mOnReplyItemClickListener.onItemClick(adapterPos, holder.mItemView);
                     }
                 }
             }

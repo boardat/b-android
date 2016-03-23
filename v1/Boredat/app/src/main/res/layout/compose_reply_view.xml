@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/composeReplyViewHolder"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:visibility="gone"
+    android:padding="8dp">
+
+    <android.support.v7.widget.AppCompatSpinner
+        android:id="@+id/compose_reply_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerInParent="true"/>
+
+    <ImageButton
+        android:id="@+id/compose_reply_send_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
+        android:padding="@dimen/margin_small"
+        android:src="@drawable/ic_action_send"
+        style="@style/Base.Widget.AppCompat.ButtonBar"/>
+
+
+    <EditText
+        android:id="@+id/compose_reply_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/compose_reply_spinner"
+        android:layout_toEndOf="@id/compose_reply_spinner"
+        android:layout_toLeftOf="@id/compose_reply_send_button"
+        android:layout_toStartOf="@id/compose_reply_send_button"
+        android:layout_alignWithParentIfMissing="true"
+        android:paddingLeft="@dimen/margin_large"
+        android:paddingStart="@dimen/margin_large"
+        android:paddingRight="@dimen/margin_small"
+        android:paddingEnd="@dimen/margin_small"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:enabled="true"
+        android:minLines="1"
+        android:maxLines="6"
+        android:isScrollContainer="true"
+        android:hint="@string/create_new_reply_hint"
+        android:textIsSelectable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:textColor="@color/textColorPrimary"
+        style="@style/Base.TextAppearance.AppCompat.Medium"/>
+
+</RelativeLayout>
